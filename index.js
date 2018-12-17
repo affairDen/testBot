@@ -6,11 +6,23 @@ const bot = new TeleBot({
 	token: process.env.API_KEY
 });
 
-bot.on('/a', resp => {
+const DAY = 24 * 60 * 60 * 1000;
+
+const getCounters = () => {
+	const electionDay = new Date('2019/03/31 00:00:00');
 	const now = new Date();
+	const diff = electionDay - now + (now.getTimezoneOffset() * 60 * 1000);
+	const restDate = new Date(diff % DAY);
+	const days = Math.round(diff / DAY);
+	const hours = restDate.getUTCHours();
+	const minutes = restDate.getMinutes() + 1;
 
+	return [days, hours, minutes];
+};
 
-	bot.sendMessage(resp.from.id, now.getTime() + (2*60*60*1000));
+bot.on('/a', resp => {
+
+	bot.sendMessage(resp.from.id, getCounters().toString());
 });
 
 bot.start();
