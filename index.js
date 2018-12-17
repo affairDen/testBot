@@ -14,7 +14,7 @@ const getCounters = () => {
 	const diff = electionDay - now + (now.getTimezoneOffset() * 60 * 1000);
 	const restDate = new Date(diff % DAY);
 	const days = Math.round(diff / DAY);
-	const hours = restDate.getUTCHours();
+	const hours = restDate.getHours();
 	const minutes = restDate.getMinutes() + 1;
 
 	return [days, hours, minutes];
