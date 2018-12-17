@@ -7,7 +7,7 @@ const bot = new TeleBot({
 });
 
 const DAY = 24 * 60 * 60 * 1000;
-const TWO_HOURS = 2 * 60 * 60 * 1000;
+const TWO_HOURS = 2;
 
 const getCounters = () => {
 	const electionDay = new Date('2019/03/31 00:00:00');
