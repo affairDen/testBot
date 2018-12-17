@@ -7,6 +7,7 @@ const bot = new TeleBot({
 });
 
 const DAY = 24 * 60 * 60 * 1000;
+const TWO_HOURS = 2 * 60 * 60 * 1000;
 
 const getCounters = () => {
 	const electionDay = new Date('2019/03/31 00:00:00');
@@ -14,7 +15,7 @@ const getCounters = () => {
 	const diff = electionDay - now + (now.getTimezoneOffset() * 60 * 1000);
 	const restDate = new Date(diff % DAY);
 	const days = Math.round(diff / DAY);
-	const hours = restDate.getHours();
+	const hours = restDate.getHours() - TWO_HOURS;
 	const minutes = restDate.getMinutes() + 1;
 
 	return [days, hours, minutes];
