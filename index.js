@@ -7,8 +7,10 @@ const bot = new TeleBot({
 });
 
 bot.on('/a', resp => {
-	console.log(resp);
-	bot.sendMessage(resp.from.id, new Date());
+	const now = new Date();
+
+
+	bot.sendMessage(resp.from.id, now.getTime() + (2*60*60*1000));
 });
 
 bot.start();
