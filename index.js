@@ -27,4 +27,11 @@ bot.on('/a', resp => {
 	bot.sendMessage(resp.from.id, (new Date()).toString());
 });
 
+bot.on('/c', resp => {
+
+	bot.sendMessage(resp.from.id, getCounters().toString());
+});
+
+bot.on('/cur', resp => bot.sendMessage(resp.from.id, `now - ${Date.now()}`));
+
 bot.start();
